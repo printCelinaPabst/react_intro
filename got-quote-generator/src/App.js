@@ -13,23 +13,6 @@ const gotQuotes = [
 
 ];
 
-const quoteStyle = {
-  fontStyle: 'italic',
-  color: '#F8C471',
-  fontSize: '1.5em',
-  marginBottom: '10px',
-  borderLeft: '4px solid #F8C471',
-  paddingLeft: '15px',
-
-};
-
-const characterStyle = {
-    fontSize: '0.8em',
-    color: '#FFFFF',
-    marginTop: '5px',
-    display: 'block'
-  };
-
 
 function App() {
   return (
