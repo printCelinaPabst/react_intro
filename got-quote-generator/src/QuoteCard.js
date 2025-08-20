@@ -1,13 +1,14 @@
 import React from "react";
 
 
-function QuoteCard() {
+function QuoteCard(props) {
 
     return (
         <blockquote>
-            "Das ist ein statisches Testzitat."
+            "{props.quoteText}"
             <footer>
-                - Test Character
+                - {props.characterName}
+                {props.isQuoteEpic && <span style={{ marginLeft: "10px" }}>🌟</span>}
             </footer>
         </blockquote>
     )
