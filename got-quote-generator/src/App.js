@@ -2,6 +2,7 @@ import './App.css';
 
 const quote = "Der Winter naht.";
 const character = "Ned Stark";
+const isEpic = true;
 
 const quoteStyle = {
   fontStyle: 'italic',
@@ -29,13 +30,13 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-        <blockquote>"{quote}"</blockquote>
-      </main>
-      <blockquote style={quoteStyle}>
+        <blockquote style={quoteStyle}>
           "{quote}"
         </blockquote>
+      </main>
       <footer style={characterStyle}>
         - {character}
+        {isEpic && <span inline style={{ marginLeft: "10px" }}>🌟</span>} 
       </footer>
     </div>
   );
