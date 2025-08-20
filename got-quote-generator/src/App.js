@@ -29,9 +29,6 @@ function App() {
             characterName={q.character}
             isQuoteEpic={q.epic}
           />
-
-
-
         ))}
       </main>
 

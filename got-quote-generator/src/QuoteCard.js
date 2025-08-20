@@ -18,14 +18,14 @@ import React from "react";
 
 
 
-function QuoteCard(props) {
+function QuoteCard({ quoteText, characterName, isQuoteEpic}) {
 
     return (
         <blockquote>
-            "{props.quoteText}"
+            "{quoteText}"
             <footer>
-                - {props.characterName}
-                {props.isQuoteEpic && <span style={{ marginLeft: "10px" }}>🌟</span>}
+                - {characterName}
+                {isQuoteEpic && <span style={{ marginLeft: "10px" }}>🌟</span>}
             </footer>
         </blockquote>
     )
