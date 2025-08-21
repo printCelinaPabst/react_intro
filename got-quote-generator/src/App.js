@@ -11,7 +11,6 @@ const gotQuotes = [
   { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
   { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
   { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
-
 ];
 
 
@@ -21,12 +20,15 @@ function App() {
 
   function showNextQuote() {
     setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % gotQuotes.length);
-
-
   };
 
   const currentQuote = gotQuotes[currentQuoteIndex];
 
+  const [showEpicMessage, setShowEpicMessage] = useState(true);
+
+  function toggleEpicMessage() {
+    setShowEpicMessage(!showEpicMessage);
+  };
 
   return (
     <div className="App">
@@ -35,15 +37,42 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-        <QuoteCard
-        key={currentQuote.id}
-        quoteText={currentQuote.quote}
-        characterName={currentQuote.character}
-        isQuoteEpic={currentQuote.epic}
+        <QuoteCard 
+          key={currentQuote.id}
+          quoteText={currentQuote.quote}
+          characterName={currentQuote.character}
+          isQuoteEpic={currentQuote.epic}
         />
-        <button
-            onClick={showNextQuote}
+        
+        {currentQuote.epic && (
+          <button
+            onClick={toggleEpicMessage}
             style={{
+              backgroundColor: '#A0522D',
+              color: 'white',
+              padding: '8px 15px',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              marginTop: '10px',
+              marginBottom: '10px',
+              fontSize: '0.9em'
+            }}
+          >
+            {/* ? ist eine if-else Bedingung --> wenn Bedingung erfüllt dann erster String, wenn nicht erfüllt dann zweiter String */}
+           {showEpicMessage ? 'Epische Nachricht ausblenden' : 'Epische Nachricht anzeigen'} 
+          </button>
+        )}
+
+        {currentQuote.epic && showEpicMessage && (
+          <p style={{ color: '#F8C471', fontStyle: 'italic', fontSize: '1.2em' }}>
+            Das ist ein wahrlich episches Zitat! 👑
+          </p>
+        )}
+
+        <button
+          onClick={showNextQuote}
+          style={{
             backgroundColor: '#DAA520',
             color: 'white',
             padding: '10px 20px',
@@ -54,12 +83,11 @@ function App() {
             fontSize: '1.1em',
             boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
           }}
-            >
-        Nächstest Zitat -</button>
+        >
+          Nächstes Zitat »
+        </button>
       </main>
-
     </div>
   );
 }
-
 export default App;
